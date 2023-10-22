@@ -1,6 +1,8 @@
 <script setup>
 const animal = 'cow'
  const searchUrl = 'https://www.pexels.com/search/'
+
+ const data = '<Storage>today is 22/10/2023</Storage>'
 </script>
 
 <template>
@@ -15,6 +17,9 @@ const animal = 'cow'
  <h2>
   <a target="_blank" :href="`https://www.pexels.com/search/${animal.toLowerCase()}`"> Search For {{ animal }}</a>
  </h2>
+
+
+ <h2 v-html="data"></h2>
 </template>
 
  <style scoped>
