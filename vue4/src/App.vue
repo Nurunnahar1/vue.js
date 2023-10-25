@@ -39,8 +39,8 @@ const persons = [
           </p>
         </div>
         <div class="grid gap-12 items-center grid-cols-3" >
-          <div class="space-y-4 text-center" v-for="person in persons" :key="person.id">
-            <img class="mx-auto object-cover rounded-xl w-64" :class="2==person.id? 'h-80':'h-64' " :src=" person.profilePhoto " />
+          <div class="space-y-4 text-center" v-for="(person,index) in persons" :key="person.id">
+            <img class="mx-auto object-cover rounded-xl w-64" :class="1==person.id? 'h-80':'h-64' " :src=" person.profilePhoto " />
 
             <div>
               <h4 class="text-2xl text-gray-500">{{ person.name }}</h4>
