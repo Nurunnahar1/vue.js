@@ -1,49 +1,48 @@
 <script setup>
- import { ref,reactive } from 'vue';
+import { ref, reactive } from "vue";
 
-const joke = ref( "Random Joke ")
-function getAJoke() {
-  fetch('https://api.chucknorris.io/jokes/random')
-    .then(response => response.json())
-    .then(data => {
-    joke.value = data.value
-   })
+const countries = reactive([
+  { name: "Bangladesh", capital: "Dhake" },
+  { name: "India", capital: "Dilli" },
+]);
+
+function getAllCountries() {
+  fetch("https://restcountries.com/v3.1/all?fields=name,capital")
+    .then((Response) => Response.json())
+    .then((data) => {
+      data.forEach((country) => {
+        countries.push({
+          name: country.name.common,
+          capital: country.capital[0],
+        });
+      });
+    });
 }
-
- 
-
- 
 </script>
 
 <template>
-  <section class="flex flex-col items-center w-[500px] hidden">
-    <p> {{ joke }}</p>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48 mt-5" @click="getAJoke()" >
-      Get a new jok
-    </button>
- 
-  </section>
-  <!-- <section class="container mx-auto">
+  <section class="container mx-auto">
     <h1 class="text-2xl">Country List</h1>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48 mt-5"  >
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48 mt-5" @click="getAllCountries()">
       List of Countries
     </button>
-    <button class="w-10 ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"  >
+    <button class="w-10 ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5">
       A
     </button>
-    <button class="w-10 ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded  mt-5" >
+    <button class="w-10 ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5">
       B
     </button>
-    <button class="w-10 ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5" >
+    <button class="w-10 ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5">
       C
     </button>
-    <br>
- 
+    <br />
+
     <ul class="mt-10">
-      <li  >
-       </li>
+      <li v-for=" country in countries " :key="country.name" >
+        {{ country.name }} = {{ country.capital}}
+      </li>
     </ul>
-  </section> -->
+  </section>
 </template>
 
 <style scoped></style>
