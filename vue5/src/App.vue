@@ -1,9 +1,7 @@
 <script setup>
  import { ref,reactive } from 'vue';
 
-const joke = reactive({
-  value:"Random Joke "
- })
+const joke = ref( "Random Joke ")
 function getAJoke() {
   fetch('https://api.chucknorris.io/jokes/random')
     .then(response => response.json())
@@ -12,33 +10,19 @@ function getAJoke() {
    })
 }
 
-function getAJokea() {
-  fetch('https://api.chucknorris.io/jokes/random')
-    .then(response => response.json())
-    .then(data => {
-    joke.value = data.value
-   })
-}
+ 
 
  
 </script>
 
 <template>
   <section class="flex flex-col items-center w-[500px] hidden">
-    <p> {{ joke.value }}</p>
+    <p> {{ joke }}</p>
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48 mt-5" @click="getAJoke()" >
-      Get a new joke
+      Get a new jok
     </button>
-
+ 
   </section>
-  <section class="flex flex-col items-center w-[500px] hidden">
-    <p> {{ joke.value }}</p>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48 mt-5" @click="getAJokea()" >
-      Get a new joke
-    </button>
-
-  </section>
-
   <!-- <section class="container mx-auto">
     <h1 class="text-2xl">Country List</h1>
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48 mt-5"  >
