@@ -12,6 +12,14 @@ function getAJoke() {
    })
 }
 
+function getAJokea() {
+  fetch('https://api.chucknorris.io/jokes/random')
+    .then(response => response.json())
+    .then(data => {
+    joke.value = data.value
+   })
+}
+
  
 </script>
 
@@ -19,6 +27,13 @@ function getAJoke() {
   <section class="flex flex-col items-center w-[500px] hidden">
     <p> {{ joke.value }}</p>
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48 mt-5" @click="getAJoke()" >
+      Get a new joke
+    </button>
+
+  </section>
+  <section class="flex flex-col items-center w-[500px] hidden">
+    <p> {{ joke.value }}</p>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48 mt-5" @click="getAJokea()" >
       Get a new joke
     </button>
 
