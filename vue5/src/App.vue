@@ -5,7 +5,11 @@ const joke = reactive({
   value:"Random Joke "
  })
 function getAJoke() {
-  joke.value= "Get Random Joke"
+  fetch('https://api.chucknorris.io/jokes/random')
+    .then(response => response.json())
+    .then(data => {
+    joke.value = data.value
+   })
 }
 
  
