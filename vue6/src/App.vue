@@ -1,22 +1,24 @@
 <script setup>
- import {ref, reactive} from 'vue'
- const persons = reactive({
-  name:'Nasrin',
-  age:28,
-  job:'Web Developer'
- })
+import { ref, reactive } from 'vue'
+ const displayImage = ref(true)
 </script>
 
 <template>
   <section class="mx-auto container">
     <h1 class="text-2xl mb-10">Vue Form</h1>
-    <p class="mb-10">{{ persons }}</p>
- 
-
-    <div class="flex flex-col mb-5 text-left"  v-for="(value,key,index) in persons" :key="key">
-      <label for="name" >{{ key }}</label> 
-      <input type="text" class="border border-gray-300 rounded-md p-2" v-model="persons[key]" />
-    </div>
+    <p class="mb-10">{{ displayImage }}</p>
+    <label for="">Display Random Image</label>
+    <input class="ml-2" type="checkbox" v-model="displayImage" />
+    <p class="mt-5">
+      <input type="radio" name="display" :value="true" v-model="displayImage" > On <br/>
+      <input type="radio" name="display" :value="false" v-model="displayImage" > Off <br/>
+    </p>
+    <img class="mt-10 mx-auto w-[500px]"
+    v-show="displayImage"
+    :src="`https://source.unsplash.com/random`"
+    alt=""  />
+      
+     
 
   </section>
 </template>
