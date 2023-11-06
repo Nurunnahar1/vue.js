@@ -1,25 +1,21 @@
 <script setup>
-import { ref, reactive } from 'vue'
- const displayImage = ref(true)
+ import { ref } from 'vue';
+const favouriteColor = ref([])
 </script>
 
 <template>
   <section class="mx-auto container">
     <h1 class="text-2xl mb-10">Vue Form</h1>
-    <p class="mb-10">{{ displayImage }}</p>
-    <label for="">Display Random Image</label>
-    <input class="ml-2" type="checkbox" v-model="displayImage" />
-    <p class="mt-5">
-      <input type="radio" name="display" :value="true" v-model="displayImage" > On <br/>
-      <input type="radio" name="display" :value="false" v-model="displayImage" > Off <br/>
-    </p>
-    <img class="mt-10 mx-auto w-[500px]"
-    v-show="displayImage"
-    :src="`https://source.unsplash.com/random`"
-    alt=""  />
-      
-     
-
+    <p class="mb-10">{{ favouriteColor }}</p>
+    Your favorite colors <br/>
+    <label for="red">Red</label>
+    <input class="ml-2 mr-2" type="checkbox" id="red" v-model="favouriteColor" value="red">
+    <label for="green">Green</label>
+    <input class="ml-2 mr-2" type="checkbox" id="green" v-model="favouriteColor" value="green">
+    <label for="blue">Blue</label>
+    <input class="ml-2 mr-2" type="checkbox" id="blue" v-model="favouriteColor" value="blue">
+    <label for="blue">Yellow</label>
+    <input class="ml-2 mr-2" type="checkbox" id="yellow" v-model="favouriteColor" value="yellow">
   </section>
 </template>
 <style scoped></style>
