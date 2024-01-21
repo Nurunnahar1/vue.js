@@ -9,11 +9,12 @@ let course = reactive({
   plateform: "abc",
 });
 
-function increment() {
-  count.value++;
+function increment(amount) {
+  // count.value++;
+  count.value +=amount;
 }
-function decrement() {
-  count.value--;
+function decrement(amount) {
+  count.value -=amount;
 }
 </script>
 
@@ -21,7 +22,7 @@ function decrement() {
   <h1>{{ course.name }} - {{ title }}</h1>
   <p>course by {{ course.name }}</p>
 
-  <button @click="increment">+</button>
+  <button @click="increment(2)">+</button>
   <h3>{{ count }}</h3>
-  <button @click="decrement">-</button>
+  <button @click="decrement(1)">-</button>
 </template>
