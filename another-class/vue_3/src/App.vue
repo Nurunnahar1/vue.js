@@ -9,13 +9,18 @@ let course = reactive({
   plateform: "abc",
 });
 
-function increment(amount) {
-  // count.value++;
-  count.value +=amount;
-}
-function decrement(amount) {
-  count.value -=amount;
-}
+// function increment(amount) {
+//   // count.value++;
+//   count.value +=amount;
+// }
+// function decrement(amount) {
+//   count.value -=amount;
+// }
+
+//using es6
+const increment = (amount) => count.value +=amount;
+
+const decrement = (amount) => count.value -=amount; 
 </script>
 
 <template>
