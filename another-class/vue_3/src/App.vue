@@ -18,16 +18,17 @@ let course = reactive({
 // }
 
 //using es6
-const increment = (amount) => count.value +=amount;
+const increment = (amount) => (count.value += amount);
 
-const decrement = (amount) => count.value -=amount; 
+const decrement = (amount) => (count.value -= amount);
+const changeName = () => (course.name = "Muskan");
 </script>
 
 <template>
   <h1>{{ course.name }} - {{ title }}</h1>
-  <p>course by {{ course.name }}</p>
+  <p @click="changeName">course by {{ course.name }}</p>
 
-  <button @click="increment(2)">+</button>
+  <button @click="increment(20)">+</button>
   <h3>{{ count }}</h3>
-  <button @click="decrement(1)">-</button>
+  <button @click="decrement(5)">-</button>
 </template>
