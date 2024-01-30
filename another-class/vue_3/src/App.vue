@@ -40,6 +40,17 @@ const checkOddOrEven = computed(() => {
  let vHtml = "Insert a new text using v-html."
 let showBtn = ref(false);
 
+let todos = ref([
+  {id:1, todo: 'task 1'},
+  {id:2, todo: 'task 2'},
+  {id:3, todo: 'task 3'},
+  {id:4, todo: 'task 4'},
+]);
+
+
+
+let imageUrl = ref('https://picsum.photos/200');
+
 
 </script>
 
@@ -60,4 +71,17 @@ let showBtn = ref(false);
   <button @click="increment(1)">+</button>
   <h3>{{ count }} // {{ checkOddOrEven }}</h3>
   <button @click="decrement(1)">-</button>
+
+
+  <div>
+  <ul>
+  <li v-for="(todo,index) in todos" :key="index">{{ index+1 }}// {{ todo.todo }}
+  </li>
+  </ul>
+  </div>
+
+
+
+<img v-bind:src="imageUrl" alt="">
+
 </template>
