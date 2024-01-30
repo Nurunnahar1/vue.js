@@ -37,22 +37,14 @@ const checkOddOrEven = computed(() => {
 });
 
 
-/** watch method */
-watch(() => count.value, (newValue, oldValue)=> {
-  console.log('newValue', newValue);
-  console.log('oldValue', oldValue);
-
-  if (newValue > 4) {
-    alert('Count value is over than 4');
-  }
-});
+ 
 
 
 
 </script>
 
 <template>
-  <h1>{{ course.name }} - {{ title }}</h1>
+  <h1 > {{ course.name }} <span v-text="title" > </span></h1>
   <p @click="changeName">course by {{ fullName }}</p>
 
   <button @click="increment(1)">+</button>
