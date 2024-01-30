@@ -38,13 +38,16 @@ const checkOddOrEven = computed(() => {
 
 
  let vHtml = "Insert a new text using v-html."
-
+let showBtn = ref(false);
 
 
 </script>
 
 <template>
-  <h1 > {{ course.name }} <span v-text="title" > </span></h1>
+  <h1 v-show="showBtn"> {{ course.name }} <span v-text="title" > </span></h1>
+
+
+  <button @click="showBtn =!showBtn">Show / Hide</button>
 
 <!-- v-html -->
 
