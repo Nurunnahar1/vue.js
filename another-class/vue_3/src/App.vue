@@ -37,7 +37,7 @@ const checkOddOrEven = computed(() => {
 });
 
 
- 
+ let vHtml = "Insert a new text using v-html."
 
 
 
@@ -45,6 +45,13 @@ const checkOddOrEven = computed(() => {
 
 <template>
   <h1 > {{ course.name }} <span v-text="title" > </span></h1>
+
+<!-- v-html -->
+
+<h1 v-html="vHtml"></h1>
+
+
+
   <p @click="changeName">course by {{ fullName }}</p>
 
   <button @click="increment(1)">+</button>
