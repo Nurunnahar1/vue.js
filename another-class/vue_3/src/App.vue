@@ -1,30 +1,18 @@
- 
-
-<style scoped>
-
-.bg-primary{
-  background-color: blueviolet;
-}
-.bg-danger{
-  background-color: aqua;
-}
-
-.width{
-  width: 500px;
-}
-</style>
-
 <template>
-  <!-- <img :src="imageURL" alt="" :class="isActive ? 'bg-primary':'bg-danger'"> -->
-  <img :src="imageURL" alt="" :class="isActive ? 'width':'bg-danger'">
-  
+  <h1>{{ title }}</h1>
+  <input type="text" ref="input" />
 </template>
 
 <script setup>
-import {ref , reactive  } from "vue";
+import { ref, onMounted } from "vue";
 
-let imageURL = ref('https://picsum.photos/200');
+let title = ref("VueJs Master Class");
+const input = ref(null);
 
-let isActive = ref(false);
-
+/** Life Cycle hools */
+onMounted(() => {
+  input.value.focus();
+  console.log(input.value);
+  console.log(object);
+});
 </script>
