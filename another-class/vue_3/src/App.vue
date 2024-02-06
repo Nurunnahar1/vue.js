@@ -1,18 +1,23 @@
 <template>
   <h1>{{ title }}</h1>
-  <input type="text" ref="input" />
+  <button id="counter" @click="increment">{{ count }}</button>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, nextTick } from "vue";
 
 let title = ref("VueJs Master Class");
-const input = ref(null);
+const count = ref(0);
 
-/** Life Cycle hools */
-onMounted(() => {
-  input.value.focus();
-  console.log(input.value);
-  console.log(object);
-});
+const increment = async() => {
+  count.value++;
+
+  //dom update before state
+  console.log(document.getElementById("counter").textContent);
+
+  await nextTick();
+
+  //after updated dom
+  console.log(document.getElementById("counter").textContent);
+ }
 </script>
