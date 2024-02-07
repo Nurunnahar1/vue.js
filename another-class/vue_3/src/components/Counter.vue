@@ -1,4 +1,5 @@
 <template>
+    <slot/>
      <div class="counter">
     <button @click="count++">+</button>
     <p>{{ count }}</p>
