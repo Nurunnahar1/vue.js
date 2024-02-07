@@ -1,6 +1,6 @@
 <template>
   <h1>{{ title }}</h1>
-  <Counter v-for="i in 3">
+  <Counter v-for="i in 3" title=" Counter">
     <div class="">
       <p>Counter {{ i }}</p>
     </div>

@@ -1,5 +1,5 @@
 <template>
-    <slot/>
+    <h2>{{ title }}</h2>
      <div class="counter">
     <button @click="count++">+</button>
     <p>{{ count }}</p>
@@ -10,6 +10,9 @@
 <script setup>
 import { ref, nextTick } from "vue";
 const count = ref(0);
+
+const props = defineProps(['title']);
+
 </script>
  
 
