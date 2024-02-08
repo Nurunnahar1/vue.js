@@ -8,8 +8,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import Counter from "./components/Counter.vue";
+  import {provide ,ref } from "vue";
+  import Counter from "./components/Counter.vue";
 
-let title = ref("VueJs Master Class");
+  provide("message", "Hello World.......");
+
+  let title = ref("VueJs Master Class");
 </script>
