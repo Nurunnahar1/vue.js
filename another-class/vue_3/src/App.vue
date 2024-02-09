@@ -1,10 +1,13 @@
 <template>
   <h1>{{ title }}</h1>
-  <Counter v-for="i in 3" title=" Counter">
-    <div class="">
-      <p>Counter {{ i }}</p>
-    </div>
-  </Counter>
+
+  <div class="">
+  <a href="/home">Home</a>
+  <a href="/about">About</a>
+  <a href="/service">Service</a>
+  <a href="/contact">Contact</a>
+  </div>
+   
 </template>
 
 <script setup>
