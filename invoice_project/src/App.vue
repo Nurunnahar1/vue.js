@@ -1,5 +1,64 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+import { reactive } from 'vue';
+
+const data = reactive({
+  sender: '',
+  billTo: '',
+  shipTo: '',
+  invoiceNumber: '',
+  date: '',
+  dueDate: '',
+  aditionalNote: '',
+
+  items: [{
+    description: '',
+    quantity: '',
+    rate: '',
+    amount: '',
+  }],
+ 
+  notes: '',
+  terms: '',
+  subtotal: '',
+  tax: '',
+  total: ''
+});
+
+
+// function updateAmount(item) {
+//   item.amount = item.quantity + item.rate;
+// }
+
+
+
+//for button 
+function addMoreItem() {
+  data.items.push({
+    description: '',
+    quantity: '',
+    rate: '',
+    amount: '',
+  });
+}
+
+//for subtotal
+function getSubtotal() {
+  let subtotal = 0;
+  data.items.forEach(item => {
+    subtotal += item.amount;
+  });
+  data.subtotal = subtotal;
+  return subtotal;
+}
+
+//for tax
+function getTotal() {
+  const tax = data.subtotal * data.tax / 100;
+  const total = data.subtotal + tax;
+  data.total = total;
+  return total;
+}
+
 </script>
 
 <template>
@@ -17,21 +76,21 @@ import HelloWorld from "./components/HelloWorld.vue";
         </div>
        
         <p class="mt-5">Sender</p>
-        <textarea name="" id="" cols="30" rows="2"></textarea>
+        <textarea v-model="data.sender" name="" id="" cols="30" rows="2"></textarea>
         <div class="flex space-x-2">
           <div class="flex flex-col">
             <span>Bill to</span>
-            <textarea name="" id="" cols="30" rows="2"></textarea>
+            <textarea v-model="data.billTo" name="" id="" cols="30" rows="2"></textarea>
           </div>
           <div class="flex flex-col">
             <span>Ship to</span>
-            <textarea name="" id="" cols="30" rows="2"></textarea>
+            <textarea v-model="data.shipTo" name="" id="" cols="30" rows="2"></textarea>
           </div>
         </div>
       </div>
       <div class="flex flex-col w-1/2 items-end">
         <h1 class="mt-12 text-4xl uppercase text-right mb-5">Invoice</h1>
-        <input
+        <input  v-model="data.invoiceNumber"
           class="w-[200px] text-right"
           type="text"
           placeholder="Invoice Number"
@@ -39,41 +98,56 @@ import HelloWorld from "./components/HelloWorld.vue";
         <div class="mt-10 flex-y-5 text-right space-y-3 w-full">
           <p>
             <span>Date</span>
-            <input class="ml-2 w-[200px]" />
+            <input  v-model="data.date" class="ml-2 w-[200px]" />
           </p>
           <p>
             <span>Due Date</span>
-            <input class="ml-2 w-[200px]" />
+            <input v-model="data.dueDate" class="ml-2 w-[200px]" />
           </p>
           <p>
             <span>Additional Note</span>
-            <input class="ml-2 w-[200px]" type="text" />
+            <input  v-model="data.aditionalNote" class="ml-2 w-[200px]" type="text" />
           </p>
         </div>
       </div>
     </div>
+
+<p>{{ data }}</p>
+
     <div class="mt-20">
       <table class="table-auto w-full">
+
+
         <tr class="bg-gray-800 text-left text-white">
           <th class="p-2 pl-5 w-1/2">Item</th>
           <th class="p-2">Quantity</th>
           <th class="p-2">Rate</th>
           <th class="p-2 w-[200px] text-right pr-5">Amount</th>
         </tr>
-        <tr>
+
+
+        <tr v-for="(item , index) in data.items"  :key="index">
           <td class="py-1">
-            <input class="w-full pl-5" type="text" placeholder="Description" />
+            <input v-model="item.description" class="w-full pl-5" type="text" placeholder="Description" />
           </td>
           <td class="">
-            <input class="w-full" type="number" placeholder="Quantity" />
+            <input v-model="item.quantity" class="w-full" type="number" placeholder="Quantity" />
           </td>
           <td class="">
-            <input class="w-full" type="number" placeholder="Rate" />
+            <input v-model="item.rate" class="w-full" type="number" placeholder="Rate" />
           </td>
-          <td class="py-1 pr-5 text-right text-gray-800">$ 0.00</td>
+
+
+          <!-- <input @input="updateAmount(item)" type="text" v-model="item.amount"  name="" id=""> -->
+          <!-- <td class="py-1 pr-5 text-right text-gray-800">$ {{ item.quantity * item.rate }}</td> -->
+          <td class="py-1 pr-5 text-right text-gray-800">$ {{ item.amount = item.quantity * item.rate }}</td>
+
+
         </tr>
+
+
       </table>
-      <button
+      <button @click="addMoreItem()"
         class="mt-5 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
       >
         Add More
@@ -83,15 +157,15 @@ import HelloWorld from "./components/HelloWorld.vue";
       <div class="flex justify-between">
         <div class="flex flex-col space-y-5 w-1/2">
           <span>Notes</span>
-          <textarea name="" id="" cols="30" rows="2"></textarea>
+          <textarea v-model="data.notes" name="" id="" cols="30" rows="2"></textarea>
           <span>Terms</span>
-          <textarea name="" id="" cols="30" rows="2"></textarea>
+          <textarea v-model="data.terms" name="" id="" cols="30" rows="2"></textarea>
         </div>
         <div class="flex flex-col w-1/2 items-end">
           <div class="mt-10 flex-y-5 text-right space-y-3 w-full">
             <p>
               <span>Subtotal</span>
-              <input
+              <input :value="getSubtotal()"
                 readonly
                 class="focus:ring-0 focus:ring-offset-0 text-right ml-2 pr-4 w-[200px] border-0"
                 placeholder="Subtotal"
@@ -99,11 +173,11 @@ import HelloWorld from "./components/HelloWorld.vue";
             </p>
             <p>
               <span>Tax</span>
-              <input type="number" class="tax text-right w-[200px] ml-2" />
+              <input v-model="data.tax" type="number" class="tax text-right w-[200px] ml-2" />
             </p>
             <p>
               <span>Total</span>
-              <input
+              <input :value="getTotal()"
                 readonly
                 class="focus:ring-0 focus:ring-offset-0 text-right ml-2 pr-4 w-[200px] border-0"
                 placeholder="Total"
