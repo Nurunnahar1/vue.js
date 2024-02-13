@@ -1,6 +1,7 @@
 <script setup> 
 import { reactive } from 'vue'
 import Person from './components/Person.vue';
+import SingleItem from './components/SingleItem.vue';
 
 const person = reactive({
   name: 'John',
@@ -16,7 +17,7 @@ const person = reactive({
 {{ person.name }} is {{ person.age }} years old and he is a {{ person.occupation}}.
 
 
-<Person :person="person" /> 
+
 
  <form>
   <div class="mb-3">
@@ -33,6 +34,9 @@ const person = reactive({
   </div>
  
 </form>
+
+<Person :person="person" /> 
+<SingleItem v-model="person.name"   />
   
 </template>
 
