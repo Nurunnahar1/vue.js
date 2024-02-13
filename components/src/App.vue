@@ -3,6 +3,7 @@ import { reactive } from 'vue'
 import Person from './components/Person.vue';
 import SingleItem from './components/SingleItem.vue';
 import MultipleItem from './components/MultipleItem.vue';
+import ButtonItem from './components/ButtonItem.vue';
 
 const person = reactive({
   name: 'John',
@@ -43,6 +44,8 @@ const person = reactive({
 <SingleItem v-model="person.occupation" label="occupation"  /> -->
 <h1>Multiple Item</h1>
 <MultipleItem v-model:name="person.name" v-model:age="person.age" v-model:occupation="person.occupation"/>
+
+<ButtonItem v-model:name="person.name" label="Name" />
   
 </template>
 
