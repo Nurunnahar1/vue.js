@@ -2,6 +2,7 @@
 import { reactive } from 'vue'
 import Person from './components/Person.vue';
 import SingleItem from './components/SingleItem.vue';
+import MultipleItem from './components/MultipleItem.vue';
 
 const person = reactive({
   name: 'John',
@@ -40,6 +41,8 @@ const person = reactive({
 <!-- <SingleItem v-model="person.name"  label="name" />
 <SingleItem v-model="person.age" label="age"  />
 <SingleItem v-model="person.occupation" label="occupation"  /> -->
+<h1>Multiple Item</h1>
+<MultipleItem v-model:name="person.name" v-model:age="person.age" v-model:occupation="person.occupation"/>
   
 </template>
 
