@@ -36,7 +36,10 @@ const person = reactive({
 </form>
 
 <Person :person="person" /> 
-<SingleItem v-model="person.name"   />
+<!-- <h1>Single Item</h1> -->
+<!-- <SingleItem v-model="person.name"  label="name" />
+<SingleItem v-model="person.age" label="age"  />
+<SingleItem v-model="person.occupation" label="occupation"  /> -->
   
 </template>
 

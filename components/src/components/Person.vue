@@ -1,4 +1,5 @@
 <script setup>
+import SingleItem from './SingleItem.vue';
 
 defineProps(['person'])
 </script>
@@ -22,5 +23,11 @@ defineProps(['person'])
   </div>
  
 </form>
+
+
+<h1>Single Item</h1>
+<SingleItem v-model="person.name"  label="Name" />
+<SingleItem v-model="person.age" label="Age"  />
+<SingleItem v-model="person.occupation" label="Occupation"  />
 
 </template>
