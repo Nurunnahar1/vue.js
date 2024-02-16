@@ -19,8 +19,8 @@
  
 
  <h1>Slot</h1>
- <ButtonComponent  :clickHandler="clickHandlerOne" />
- <ButtonComponent  :clickHandler="clickHandlerTwo" />
+ <ButtonComponent  :clickHandler="clickHandlerOne" label="Click One" />
+ <ButtonComponent  :clickHandler="clickHandlerTwo" label="Click Two" />
 
  
 </template>

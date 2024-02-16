@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from 'vue'
-defineProps(['clickHandler', ])
+defineProps(['clickHandler', 'label', ])
 </script>
 <template>
 
 <p>
-<button type="button" class="btn btn-primary" @click="clickHandler()" >Click Me</button>
+<button type="button" class="btn btn-primary" @click="clickHandler()" >{{ label }}</button>
 </p>
 
 </template>
