@@ -1,5 +1,6 @@
-<script  >
+<script setup >
 import { ref,reactive, inject } from "vue"; 
+import ChildComponent from "./ChildComponent.vue";
  
 const data = inject("myData");
 </script>
@@ -11,5 +12,5 @@ const data = inject("myData");
   <button @click="data.increase()">++</button>
   <button @click="data.decrease()">--</button>
 
- 
+ <ChildComponent></ChildComponent>
 </template>

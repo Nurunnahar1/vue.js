@@ -68,7 +68,7 @@ provide('myData', data)
 
 
 <h4>Props Component</h4>
-<ParentComponent></ParentComponent>
+<ParentComponent/> 
 
 </template>
 
