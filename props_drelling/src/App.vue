@@ -4,6 +4,7 @@ import ButtonComponent from "./components/ButtonComponent.vue";
 import SlotComponent from "./components/SlotComponent.vue";
 import PropsDrelling from "./components/PropsDrelling.vue";
 import ParentComponent from "./components/ParentComponent.vue";
+import { ydata } from "./data/ydata";
 
 
 const msg = ref("Hello World");
@@ -34,7 +35,7 @@ provide('myData', data)
 </script>
 
 <template>
-  <h4>Button Component</h4>
+  <!-- <h4>Button Component</h4>
   <ButtonComponent :clickHandler="clickHandlerOne">
     <button type="button" class="btn btn-primary">Primary</button>
   </ButtonComponent>
@@ -64,11 +65,15 @@ provide('myData', data)
 
 <p>{{ data.message }} | {{ data.count }}</p>
   <h4>Props Drelling</h4>
-  <PropsDrelling :data="data" ></PropsDrelling>
+  <PropsDrelling :data="data" ></PropsDrelling> -->
 
 
 <h4>Props Component</h4>
 <ParentComponent/> 
+
+
+<h3>Ydata From ydata file</h3>
+<p>Ydata {{ ydata.message }} | {{ ydata.count }}</p>
 
 </template>
 
