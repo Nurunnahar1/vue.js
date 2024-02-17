@@ -1,8 +1,10 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive,provide } from "vue";
 import ButtonComponent from "./components/ButtonComponent.vue";
 import SlotComponent from "./components/SlotComponent.vue";
 import PropsDrelling from "./components/PropsDrelling.vue";
+import ParentComponent from "./components/ParentComponent.vue";
+
 
 const msg = ref("Hello World");
 
@@ -26,6 +28,9 @@ const data = reactive({
     this.count--;
   }
 })
+
+provide('myData', data)
+
 </script>
 
 <template>
@@ -61,6 +66,9 @@ const data = reactive({
   <h4>Props Drelling</h4>
   <PropsDrelling :data="data" ></PropsDrelling>
 
+
+<h4>Props Component</h4>
+<ParentComponent></ParentComponent>
 
 </template>
 

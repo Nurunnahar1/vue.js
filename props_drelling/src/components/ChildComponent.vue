@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from "vue";
-defineProps(["data"]);
+import { ref,reactive,inject } from "vue";
+const data = inject('myData');
 </script>
 
 <template>
-  <h4>Parent component</h4>
+  <h4>Child component</h4>
 
   <button @click="data.increase()">++</button>
   <button @click="data.decrease()">--</button>
