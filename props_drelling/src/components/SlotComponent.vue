@@ -4,7 +4,7 @@ import { ref } from 'vue'
 <template>
 
  <p>
- <slot name="header">fdfdf</slot>
+ <slot name="header">  </slot>
  </p>
 
  <p>

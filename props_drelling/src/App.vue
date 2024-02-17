@@ -2,6 +2,7 @@
 import { ref, reactive } from "vue";
 import ButtonComponent from "./components/ButtonComponent.vue";
 import SlotComponent from "./components/SlotComponent.vue";
+import PropsDrelling from "./components/PropsDrelling.vue";
 
 const msg = ref("Hello World");
 
@@ -12,6 +13,19 @@ function clickHandlerOne() {
 function clickHandlerTwo() {
   msg.value = "Click Two";
 }
+
+
+
+const data = reactive({
+  message: "Hello World",
+  count: 0,
+  increase() {
+    this.count++;
+  },
+  decrease() {
+    this.count--;
+  }
+})
 </script>
 
 <template>
@@ -39,6 +53,15 @@ function clickHandlerTwo() {
 
 
   </SlotComponent>
+
+
+
+
+<p>{{ data.message }} | {{ data.count }}</p>
+  <h4>Props Drelling</h4>
+  <PropsDrelling :data="data" ></PropsDrelling>
+
+
 </template>
 
 <style scoped></style>
